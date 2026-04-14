@@ -1,0 +1,33 @@
+# Environment
+.env
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Output
+output/*.xlsx
+output/*.html
+output/*.pdf
+output/*.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Data (keep samples)
+data/*.xlsx
+data/*.csv
+!data/sample_*.csv
+!data/sample_*.xlsx

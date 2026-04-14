@@ -1,0 +1,53 @@
+"""
+Generate sample messy data for DataForge demo.
+Run this script to create data/sample_sales.csv
+"""
+
+import csv
+import random
+import os
+from pathlib import Path
+
+DATA_DIR = Path(__file__).parent / "data"
+DATA_DIR.mkdir(exist_ok=True)
+
+# Intentionally messy data to demonstrate cleaning capabilities
+rows = [
+    ["Order ID", "Customer Name", "Email", "Phone", "Order Date", "Product", "Quantity", "Unit Price", "Total", "Region", "Status"],
+    ["ORD-001", "  John Smith ", "john.smith@gmail.com", "(555) 123-4567", "01/15/2026", "Widget Pro", "3", "$29.99", "$89.97", "Northeast", "Completed"],
+    ["ORD-002", "jane DOE", "jane.doe@yahoo.com", "555.234.5678", "2026-01-18", "Widget Basic", "10", "12.50", "$125.00", "southeast", "Completed"],
+    ["ORD-003", "Bob Johnson", "bob@company", "5553456789", "Jan 20, 2026", "Gadget X", "1", "$199.99", "$199.99", "West", "Pending"],
+    ["ORD-004", " Alice Williams", "alice.w@hotmail.com", "1-555-456-7890", "01-22-2026", "Widget Pro", "5", "$29.99", "$149.95", "Northeast", "Completed"],
+    ["ORD-005", "Charlie Brown", "", "(555)567-8901", "2026/01/25", "Gadget X", "2", "199.99", "$399.98", "Midwest", "Shipped"],
+    ["ORD-006", "John Smith", "john.smith@gmail.com", "(555) 123-4567", "01/15/2026", "Widget Pro", "3", "$29.99", "$89.97", "Northeast", "Completed"],  # Duplicate
+    ["ORD-007", "Diana Prince", "diana@email.com", "555 678 9012", "February 1, 2026", "Super Gadget", "1", "$499.00", "$499.00", "West", "Completed"],
+    ["ORD-008", "evan ROGERS ", "EVAN.ROGERS@GMAIL.COM", "5557890123", "02/05/26", "Widget Basic", "", "$12.50", "", "southeast", "Pending"],
+    ["ORD-009", "Fiona Apple", "fiona apple @ mail.com", "(555) 890-1234", "2026-02-10", "Widget Pro", "7", "$29.99", "$209.93", "Northeast", "Completed"],
+    ["ORD-010", "George Lucas", "george.lucas@email.com", "555-901-2345", "02/12/2026", "Gadget X", "3", "$199.99", "$599.97", "West", "Shipped"],
+    ["ORD-011", "  Hannah Montana  ", "hannah m@email.com", "15550123456", "Feb 15 2026", "Super Gadget", "2", "$ 499.00", "$998.00", "Midwest", "Completed"],
+    ["ORD-012", "ivan PETROV", "ivan@email.com", "555.012.3456", "2026-02-18", "Widget Basic", "25", "$12.50", "$312.50", "Northeast", "Completed"],
+    ["ORD-013", "Julia Roberts", "julia.roberts@email.com", "(555) 123-4567", "20/02/2026", "Gadget X", "1", "$199.99", "$199.99", "", "Pending"],
+    ["ORD-014", "Kevin Hart", "kevin_hart@email.com", "555 234-5678", "2026-02-22", "Widget Pro", "15", "$29.99", "$449.85", "West", "Completed"],
+    ["ORD-015", "Laura Palmer", "laura@email.com", "(555)345-6789", "February 25, 2026", "Super Gadget", "1", "$499.00", "$499.00", "Southeast", "Shipped"],
+    ["ORD-016", "Mike Tyson", "mike.tyson@", "5554567890", "02/28/2026", "Widget Basic", "50", "$12.50", "$625.00", "Midwest", "Completed"],
+    ["ORD-017", "Nancy Drew", "nancy.drew@email.com", "1-555-567-8901", "03/01/2026", "Gadget X", "4", "$199.99", "$799.96", "Northeast", "Pending"],
+    ["ORD-018", "Oscar Wilde", "oscar.wilde@email.com", "(555) 678-9012", "March 5 2026", "Widget Pro", "8", "$29.99", "$239.92", "West", "Completed"],
+    ["ORD-019", "Penny Lane", "penny.lane@email.com", "555-789-0123", "2026-03-08", "Super Gadget", "3", "$499.00", "$1,497.00", "Southeast", "Shipped"],
+    ["ORD-020", "Quinn Hughes", "quinn@email.com", "5558901234", "03/10/2026", "Widget Basic", "100", "$12.50", "$1,250.00", "Midwest", "Completed"],
+]
+
+filepath = DATA_DIR / "sample_sales.csv"
+with open(filepath, "w", newline="", encoding="utf-8") as f:
+    writer = csv.writer(f)
+    writer.writerows(rows)
+
+print(f"✅ Sample data generated: {filepath}")
+print(f"   {len(rows) - 1} rows with intentionally messy data:")
+print("   - Inconsistent date formats")
+print("   - Mixed case names & emails")
+print("   - Currency symbols in numbers")
+print("   - Phone format inconsistencies")
+print("   - Duplicate rows")
+print("   - Missing values")
+print("   - Invalid emails")
+print("   - Leading/trailing whitespace")
